@@ -32,9 +32,9 @@
 - **Which Vercel team to deploy to.** The CLI asked, and the AI deferred to me rather than picking one.
 
 **AI output I changed or overrode:**
-- **The Next 16 scaffold turned on `cacheComponents`.** I turned it off. React `<Activity>` keeps hidden
-  routes mounted, so an editor would keep autosaving after you navigate away. Every page here is per-user
-  anyway.
+- **The Next 16 scaffold turned on `cacheComponents`.** I turned it off. React `<Activity>` keeps visited
+  routes alive with their state, so returning to a document could show a stale in-memory copy instead of
+  fresh content from the server. Every page here is per-user anyway.
 - **A literal invisible BOM character ended up inside a regex in generated code.** It worked, but it was
   unreadable and fragile. I caught it on review and replaced it with an explicit escape.
 - **An over-built zod enum `.transform` cast** got replaced with a plain `z.enum`.

@@ -47,7 +47,7 @@ app/api/** route handlers ──► lib/documents.ts (service: every query scope
 | **Schema created idempotently on first request** (advisory-locked) | Zero setup for reviewers and for a fresh Neon database | A migration tool (e.g. drizzle-kit / sqitch) once the schema evolves |
 | **Import creates a new document** (vs. attachment) | Most product-relevant use: bring existing writing into the tool | No attachments or images |
 | **4 MB upload limit** | Vercel serverless request bodies cap at 4.5 MB | Direct-to-storage uploads (signed URLs) for larger files |
-| **Cache Components turned off** (Next 16 default is on) | Every page is per-user and cookie-driven; Activity-preserved hidden routes would keep the editor's autosave timers alive after navigation | Revisit if pages gain cacheable public parts |
+| **Cache Components turned off** (Next 16 default is on) | Every page is per-user and cookie-driven; Activity-based navigation keeps visited routes alive with their state, so returning to a document could show a stale in-memory editor instead of fresh server content | Revisit if pages gain cacheable public parts |
 
 ## Permission model
 
