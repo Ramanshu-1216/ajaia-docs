@@ -3,7 +3,7 @@
 A lightweight collaborative document editor: create and format documents, import files, share them
 with teammates as viewers or editors, and export to Markdown.
 
-- **Live app:** _see [SUBMISSION.md](SUBMISSION.md)_
+- **Live app:** https://ajaia-docs-xi-ashy.vercel.app
 - **Architecture & tradeoffs:** [ARCHITECTURE.md](ARCHITECTURE.md)
 - **How AI was used:** [AI_WORKFLOW.md](AI_WORKFLOW.md)
 

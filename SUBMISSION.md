@@ -6,7 +6,7 @@
 
 | What | Where |
 |---|---|
-| Live app | **LIVE_URL_PENDING** |
+| Live app | **https://ajaia-docs-xi-ashy.vercel.app** |
 | Walkthrough video | see [`VIDEO_URL.txt`](VIDEO_URL.txt) |
 
 ## Test accounts
