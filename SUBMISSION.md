@@ -7,7 +7,8 @@
 | What | Where |
 |---|---|
 | Live app | **https://ajaia-docs-xi-ashy.vercel.app** |
-| Walkthrough video | see [`VIDEO_URL.txt`](VIDEO_URL.txt) |
+| Walkthrough video | https://drive.google.com/file/d/1bTK0_gBrUqS2vim4W6sqWHp9Y8R8OkGD/view?usp=sharing (also in [`VIDEO_URL.txt`](VIDEO_URL.txt)) |
+| Source repository | https://github.com/Ramanshu-1216/ajaia-docs (implementation reviewed as [PR #1](https://github.com/Ramanshu-1216/ajaia-docs/pull/1)) |
 
 ## Test accounts
 
