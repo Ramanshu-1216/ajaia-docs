@@ -68,7 +68,9 @@ export function ShareDialog({ docId, title, owner, open, onClose }: Props) {
 
   async function onSubmit(event: FormEvent) {
     event.preventDefault();
-    if (await grant(email, role)) setEmail("");
+    const submitted = email;
+    // Only clear the field if the user hasn't started typing another address meanwhile.
+    if (await grant(submitted, role)) setEmail((current) => (current === submitted ? "" : current));
   }
 
   async function revoke(userId: string) {

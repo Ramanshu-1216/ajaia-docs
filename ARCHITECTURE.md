@@ -79,9 +79,10 @@ Defined once in `lib/access.ts`; every service function calls `authorize(user, d
   rejection of unsupported / oversized / corrupt files, HTML → Markdown.
 - **Session tokens**: round-trip, tampering, wrong secret, expiry.
 
-Beyond unit tests, I ran a scripted headless-browser walkthrough of every flow (login, formatting,
-rename + reload persistence, sharing, viewer read-only, concurrent-edit conflict, .docx import,
-Markdown export, invalid upload) — the screenshots in `docs/screenshots/` come from that run.
+Beyond unit tests, `npm run e2e` drives real Chrome through every flow (login, formatting, rename +
+reload persistence, sharing, viewer read-only, concurrent-edit conflict, .docx import, Markdown export,
+invalid upload) against any running deployment, cleaning up after itself. The screenshots in
+`docs/screenshots/` come from that run, and it found a real race in the share dialog (see AI_WORKFLOW.md).
 
 ## Deliberately out of scope
 
@@ -97,5 +98,5 @@ Markdown export, invalid upload) — the screenshots in `docs/screenshots/` come
    column already orders them.
 2. **Presence**: "Bob is also editing" via lightweight polling, so conflicts are anticipated rather than
    discovered.
-3. **Playwright e2e in CI** for the share → view-only → conflict path.
+3. **Run the e2e walkthrough in CI** against preview deployments.
 4. Rate-limit login; proper migrations.

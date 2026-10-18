@@ -45,6 +45,9 @@
   changing the global install.
 - **Toolchain conflict:** Vitest 5 needs `@types/node` 22 or newer, so I aligned it with the Node 22
   runtime instead of forcing `--legacy-peer-deps`.
+- **A real race condition, found by the browser walkthrough.** If you typed a second email while the
+  first share request was still in flight, the dialog cleared your new input when the first request
+  finished. The fix only clears the field if it still holds the address that was just shared.
 - **Copy consistency:** the seeded doc said "Shared with me" while the UI says "Shared with you". This
   was found by reviewing screenshots, not by tests.
 
@@ -63,9 +66,11 @@ session.
 4. **Browser walkthrough:** a scripted, real-Chrome run of login, formatting, rename and
    reload-persistence, share, viewer read-only, a two-user conflict, .docx import, Markdown export and
    an invalid upload.
-   - The run first failed twice. Both times the cause was my test script (ambiguous selectors, and a
-     non-idempotent run against a persisted database), not the app. Telling those apart is the
-     judgment part.
+   - Its failures had different causes, and telling them apart was the judgment part.
+   - Two were bugs in the test script: ambiguous selectors, and a non-idempotent run against a
+     persisted database.
+   - One was the genuine share-dialog race described above.
+   - The final script is in the repo as `npm run e2e`.
 5. **Visual review** of each screenshot. This caught the copy mismatch and a double focus ring on the
    title field.
 6. **Production smoke test** after deploying: the same flows against the live URL.

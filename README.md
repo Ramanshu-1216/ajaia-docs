@@ -28,6 +28,14 @@ All seeded accounts share the password **`ajaia-demo`** (the login page lists th
 5. Back on the dashboard: **Import file** with one of the files in [`samples/`](samples/) (`.docx`, `.md`,
    `.txt`), then **Export .md** from the editor.
 
+## Screenshots
+
+| Editor | Sharing |
+|---|---|
+| ![Editor](docs/screenshots/03-editor.png) | ![Share dialog](docs/screenshots/04-share-dialog.png) |
+| **Viewer (read-only)** | **Concurrent-edit conflict** |
+| ![Viewer](docs/screenshots/06-viewer.png) | ![Conflict](docs/screenshots/07-conflict.png) |
+
 ## Features
 
 | Area | What works |
@@ -72,7 +80,12 @@ npm test             # Vitest: access rules, sharing + conflict integration test
 npm run typecheck    # tsc --noEmit
 npm run lint         # ESLint (next/core-web-vitals)
 npm run build        # production build
+npm run e2e          # browser walkthrough of every flow against a running app (needs Google Chrome);
+                     # BASE_URL=https://… to target a deployment, SCREENSHOTS=1 to refresh docs/screenshots
 ```
+
+The e2e walkthrough works in its own new document and deletes what it creates, so it is safe to run
+against production.
 
 Tests run against a fresh in-memory PGlite database per file — the same SQL as production, no mocks.
 
