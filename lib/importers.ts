@@ -9,7 +9,7 @@ export const IMPORT_EXTENSIONS = [".txt", ".md", ".docx"] as const;
 
 type Extension = (typeof IMPORT_EXTENSIONS)[number];
 
-const decodeText = (bytes: Uint8Array) => new TextDecoder().decode(bytes).replace(/^﻿/, "");
+const decodeText = (bytes: Uint8Array) => new TextDecoder().decode(bytes).replace(/^\uFEFF/, "");
 
 const escapeHtml = (text: string) =>
   text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
