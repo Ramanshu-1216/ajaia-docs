@@ -1,0 +1,156 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fog: #eef1f4;
+  --color-sheet: #ffffff;
+  --color-ink: #1b2430;
+  --color-graphite: #5b6675;
+  --color-mist: #9aa4b2;
+  --color-rule: #dce1e7;
+  --color-highlight: #ffe58a;
+  --color-danger: #b42318;
+}
+
+@theme inline {
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-source-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+body {
+  background: var(--color-fog);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: var(--color-highlight);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 2px;
+}
+
+dialog::backdrop {
+  background: rgb(27 36 48 / 0.35);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    animation: dialog-in 140ms ease-out;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+/* ---- Document content (TipTap / ProseMirror) ---- */
+
+.doc-prose {
+  font-family: var(--font-serif);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  min-height: 55vh;
+  outline: none;
+  overflow-wrap: anywhere;
+}
+
+.doc-prose > * + * {
+  margin-top: 0.8em;
+}
+
+.doc-prose h1,
+.doc-prose h2,
+.doc-prose h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  margin-top: 1.4em;
+}
+
+.doc-prose h1 {
+  font-size: 2rem;
+}
+
+.doc-prose h2 {
+  font-size: 1.45rem;
+}
+
+.doc-prose h3 {
+  font-size: 1.15rem;
+}
+
+.doc-prose > :first-child {
+  margin-top: 0;
+}
+
+.doc-prose ul {
+  list-style: disc;
+  padding-left: 1.5em;
+}
+
+.doc-prose ol {
+  list-style: decimal;
+  padding-left: 1.5em;
+}
+
+.doc-prose li + li {
+  margin-top: 0.25em;
+}
+
+.doc-prose li > p {
+  margin: 0;
+}
+
+.doc-prose blockquote {
+  border-left: 3px solid var(--color-rule);
+  color: var(--color-graphite);
+  padding-left: 1em;
+}
+
+.doc-prose code {
+  background: var(--color-fog);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  padding: 0.1em 0.3em;
+}
+
+.doc-prose pre {
+  background: var(--color-ink);
+  border-radius: 8px;
+  color: var(--color-fog);
+  overflow-x: auto;
+  padding: 1em 1.2em;
+}
+
+.doc-prose pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
+
+.doc-prose a {
+  color: #2b59c3;
+  text-decoration: underline;
+}
+
+.doc-prose hr {
+  border-color: var(--color-rule);
+  margin: 2em 0;
+}
+
+.doc-prose p.is-editor-empty:first-child::before {
+  color: var(--color-mist);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
