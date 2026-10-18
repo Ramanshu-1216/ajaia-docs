@@ -54,7 +54,7 @@ const WELCOME_DOC = `
 <ol>
   <li><p>Format text with the toolbar: <strong>bold</strong>, <em>italic</em>, <u>underline</u>, headings and lists.</p></li>
   <li><p>Rename the document by editing its title. Changes save automatically.</p></li>
-  <li><p>Open <strong>Share</strong> to give Carol viewer or editor access, then sign in as Carol to see it under <em>Shared with me</em>.</p></li>
+  <li><p>Open <strong>Share</strong> to give Carol viewer or editor access, then sign in as Carol to see it under <em>Shared with you</em>.</p></li>
 </ol>
 <h2>What gets saved</h2>
 <ul>

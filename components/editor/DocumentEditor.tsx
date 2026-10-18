@@ -97,7 +97,7 @@ export function DocumentEditor({ doc, user }: { doc: DocRecord; user: User }) {
               readOnly={!canEdit}
               maxLength={200}
               aria-label="Document title"
-              className="w-full truncate rounded-md border border-transparent bg-transparent px-1.5 py-0.5 font-display text-xl font-bold tracking-tight hover:border-rule focus:border-ink focus:outline-none read-only:hover:border-transparent"
+              className="w-full truncate rounded-md border border-transparent bg-transparent px-1.5 py-0.5 font-display text-xl font-bold tracking-tight hover:border-rule focus:border-ink focus:outline-none focus-visible:outline-none read-only:hover:border-transparent"
             />
             <p className="flex items-center gap-2 px-1.5 text-xs text-graphite">
               {isOwner ? (
