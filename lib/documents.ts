@@ -16,6 +16,7 @@ export interface DocSummary {
   title: string;
   updatedAt: string;
   ownerName: string;
+  ownerEmail: string;
   role: Role;
 }
 
@@ -39,6 +40,7 @@ interface DocRow {
   version: number;
   owner_id: string;
   owner_name: string;
+  owner_email: string;
   updated_at: Date | string;
   role: Role;
 }
@@ -62,6 +64,7 @@ function toRecord(row: DocRow): DocRecord {
     version: row.version,
     ownerId: row.owner_id,
     ownerName: row.owner_name,
+    ownerEmail: row.owner_email,
     updatedAt: toIso(row.updated_at),
     role: row.role,
   };
@@ -71,7 +74,7 @@ function toRecord(row: DocRow): DocRecord {
 export async function getDocument(db: Db, userId: string, docId: string): Promise<DocRecord> {
   if (!UUID_RE.test(docId)) throw notFound();
   const [row] = await db.query<DocRow>(
-    `SELECT d.id, d.title, d.content, d.version, d.owner_id, u.name AS owner_name, d.updated_at,
+    `SELECT d.id, d.title, d.content, d.version, d.owner_id, u.name AS owner_name, u.email AS owner_email, d.updated_at,
             CASE WHEN d.owner_id = $2 THEN 'owner' ELSE s.role END AS role
        FROM documents d
        JOIN users u ON u.id = d.owner_id
@@ -94,7 +97,7 @@ export async function listDocuments(
   userId: string,
 ): Promise<{ owned: DocSummary[]; shared: DocSummary[] }> {
   const rows = await db.query<Omit<DocRow, "content" | "version" | "owner_id">>(
-    `SELECT d.id, d.title, d.updated_at, u.name AS owner_name,
+    `SELECT d.id, d.title, d.updated_at, u.name AS owner_name, u.email AS owner_email,
             CASE WHEN d.owner_id = $1 THEN 'owner' ELSE s.role END AS role
        FROM documents d
        JOIN users u ON u.id = d.owner_id
@@ -108,6 +111,7 @@ export async function listDocuments(
     title: r.title,
     updatedAt: toIso(r.updated_at),
     ownerName: r.owner_name,
+    ownerEmail: r.owner_email,
     role: r.role,
   }));
   return {

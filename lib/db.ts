@@ -1,5 +1,6 @@
 import { mkdirSync } from "node:fs";
 import path from "node:path";
+import { DEMO_PASSWORD, DEMO_USERS } from "./demo-users";
 import { hashPassword } from "./passwords";
 
 /**
@@ -13,13 +14,6 @@ export interface Db {
   exec(sql: string): Promise<void>;
 }
 
-export const DEMO_PASSWORD = "ajaia-demo";
-
-export const DEMO_USERS = [
-  { email: "alice@ajaia.dev", name: "Alice Chen" },
-  { email: "bob@ajaia.dev", name: "Bob Martinez" },
-  { email: "carol@ajaia.dev", name: "Carol Okafor" },
-] as const;
 
 const SCHEMA = `
   -- Serialize concurrent cold starts; the lock is released when this implicit transaction ends.
